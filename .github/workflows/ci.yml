@@ -68,12 +68,12 @@ jobs:
       - name: Security audit dependencies
         run: |
           gem install bundler-audit
-          bin/bundler-audit --update
+          bundler-audit --update
       - name: Security audit application code
         run: |
           gem install brakeman
-          bin/brakeman -q -w2
+          brakeman -q -w2
       - name: Lint Ruby files
         run: |
           gem install rubocop-rails
-          bin/rubocop --parallel
+          rubocop --parallel
