@@ -76,4 +76,4 @@ jobs:
       - name: Lint Ruby files
         run: |
           gem install rubocop-rails
-          rubocop --parallel
+          rubocop --parallel --display-only-safe-correctable
