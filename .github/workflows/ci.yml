@@ -17,7 +17,7 @@ jobs:
       postgres:
         image: postgres:11-alpine
         ports:
-          - ['5432:5432']
+          - "5432:5432"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -25,7 +25,8 @@ jobs:
           --health-retries 5
       redis:
         image: redis
-        ports: [ '6379:6379' ]
+        ports:
+          - "6379:6379"
         options: --entrypoint redis-server
 
     steps:
