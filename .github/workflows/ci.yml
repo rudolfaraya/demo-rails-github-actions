@@ -113,7 +113,9 @@ jobs:
 #          REPORT_PATH: tmp/brakeman.json
 
       - name: Rubocop checks
-        uses: gimenete/rubocop-action@1.0
+        uses: luizfonseca/github-actions-rubocop@1.5.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
 
 
 #      - name: Lint Ruby files
