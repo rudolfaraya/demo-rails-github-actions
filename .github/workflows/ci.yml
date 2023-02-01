@@ -96,7 +96,7 @@ jobs:
         with:
           bundler_audit_version: gemfile
           # Change reviewdog reporter if you need [github-check,github-pr-review,github-pr-check].
-          reporter: github-pr-review
+          reporter: github-check
 
 #      - name: Security audit dependencies
 #        run: |
