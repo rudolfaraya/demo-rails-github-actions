@@ -82,8 +82,9 @@ jobs:
         run: |
           gem install brakeman
       - name: Brakeman Report
-        run: |
-          brakeman --color -f json > tmp/brakeman.json || exit 0
+        uses: artplan1/brakeman-action@v1.2.1
+        with:
+          flags: "--color"
 #      - name: Brakeman
 #        uses: devmasx/brakeman-linter-action@v1.0.0
 #        env:
