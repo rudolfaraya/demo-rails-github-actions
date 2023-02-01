@@ -91,10 +91,12 @@ jobs:
         with:
           ruby-version: 3.1.0
 
-      - name: Bundler Audit
-        uses: andrewmcodes/bundler-audit-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: bundler_audit
+        uses: tomferreira/action-bundler-audit@v1
+        with:
+          bundler_audit_version: gemfile
+          # Change reviewdog reporter if you need [github-check,github-pr-review,github-pr-check].
+          reporter: github-pr-review
 
 #      - name: Security audit dependencies
 #        run: |
