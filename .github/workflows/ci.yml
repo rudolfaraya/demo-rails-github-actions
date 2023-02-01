@@ -56,7 +56,7 @@ jobs:
           bundle exec rails test
 
       - name: Create Coverage Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: code-coverage
           path: coverage/
@@ -67,7 +67,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
+      - name: Install Ruby
         uses: ruby/setup-ruby@v1 # v1.127.0
         with:
           ruby-version: 3.1.0
@@ -95,3 +95,6 @@ jobs:
         run: |
           gem install rubocop-rails
           rubocop --parallel || true
+
+      - name: Analyze code statically using Rails Best Practices
+        uses: moneyforward/rails_best_practices-action@v0
