@@ -55,24 +55,35 @@ jobs:
           bundle exec rails db:prepare
           bundle exec rails test
 
-  lint:
+  security:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+        uses: ruby/setup-ruby@v1 # v1.127.0
         with:
-          bundler-cache: true
-      # Add or replace any other lints here
+          ruby-version: 3.1.0
+
       - name: Security audit dependencies
         run: |
           gem install bundler-audit
           bundler-audit --update
-      - name: Security audit application code
+
+      # Brakeman: static analysis tool which checks Ruby on Rails applications for security vulnerabilities
+      - name: Install Brakeman
         run: |
           gem install brakeman
-          brakeman -q -w2
+      - name: Brakeman Report
+        run: |
+          brakeman -f json > tmp/brakeman.json || exit 0
+      - name: Brakeman
+        uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPORT_PATH: tmp/brakeman.json
+
       - name: Lint Ruby files
         run: |
           gem install rubocop-rails
