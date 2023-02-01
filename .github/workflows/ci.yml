@@ -67,11 +67,11 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
         run: |
-          RAILS_ENV: test
           bundle exec rails db:prepare
 
       - name: Run Tests
         env:
+          RAILS_ENV: test
           DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
         run: |
           bundle exec rails test
