@@ -112,7 +112,11 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN_2 }}
 #          REPORT_PATH: tmp/brakeman.json
 
-      - name: Lint Ruby files
-        run: |
-          gem install rubocop-rails
-          rubocop --parallel || true
+      - name: Rubocop checks
+        uses: gimenete/rubocop-action@1.0
+
+
+#      - name: Lint Ruby files
+#        run: |
+#          gem install rubocop-rails
+#          rubocop --parallel || true
