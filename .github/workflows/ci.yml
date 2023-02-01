@@ -39,9 +39,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.0
-#      - uses: borales/actions-yarn@v2.3.0
-#        with:
-#          cmd: install
+
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -89,14 +87,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Ruby
-        uses: ruby/setup-ruby@v1 # v1.127.0
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.0
 
-      - name: Security audit dependencies
-        run: |
-          gem install bundler-audit
-          bundler-audit --update
+      - name: Bundler Audit
+        uses: andrewmcodes/bundler-audit-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Security audit dependencies
+#        run: |
+#          gem install bundler-audit
+#          bundler-audit --update
 
       # Brakeman: static analysis tool which checks Ruby on Rails applications for security vulnerabilities
       - name: Install Brakeman
