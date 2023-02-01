@@ -73,3 +73,4 @@ group :test do
 end
 
 # Github Actions gems
+gem 'simplecov', require: false, group: :test
