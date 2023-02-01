@@ -102,15 +102,16 @@ jobs:
       - name: Install Brakeman
         run: |
           gem install brakeman
+
+      - name: Run Brakeman
+        run: |
+          brakeman -f json > tmp/brakeman.json || exit 0
+
       - name: Brakeman Report
-        uses: artplan1/brakeman-action@v1.2.1
-        with:
-          flags: "--color"
-#      - name: Brakeman
-#        uses: devmasx/brakeman-linter-action@v1.0.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN_2 }}
-#          REPORT_PATH: tmp/brakeman.json
+        uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          REPORT_PATH: tmp/brakeman.json
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Rubocop checks
         uses: luizfonseca/github-actions-rubocop@1.5.6
