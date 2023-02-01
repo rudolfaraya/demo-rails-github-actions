@@ -12,6 +12,7 @@ on:
     branches: [ "main" ]
 jobs:
   test:
+    name: Test & Coverage
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -81,6 +82,7 @@ jobs:
           path: coverage/
 
   security:
+    name: Security
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
