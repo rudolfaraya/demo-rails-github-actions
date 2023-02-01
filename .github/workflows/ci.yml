@@ -118,8 +118,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-#      - name: Lint Ruby files
-#        run: |
-#          gem install rubocop-rails
-#          rubocop --parallel || true
+      - name: Lint Ruby files
+        run: |
+          gem install rubocop-rails
+          rubocop --parallel || exit 0
