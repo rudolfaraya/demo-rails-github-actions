@@ -42,6 +42,16 @@ jobs:
 #      - uses: borales/actions-yarn@v2.3.0
 #        with:
 #          cmd: install
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+
       - name: Build and run tests
         env:
           DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
