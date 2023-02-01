@@ -52,7 +52,7 @@ jobs:
         with:
           cmd: install # will run `yarn install` command
 
-      - name: Build and run tests
+      - name: Install dependencies and gems
         env:
           DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
           REDIS_URL: redis://localhost:6379/0
@@ -62,7 +62,15 @@ jobs:
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
+
+      - name: Prepare Database
+        env:
+          DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
+        run: |
           bundle exec rails db:prepare
+
+      - name: Run Tests
+        run: |
           bundle exec rails test
 
       - name: Create Coverage Artifact
