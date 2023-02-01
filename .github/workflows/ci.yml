@@ -81,7 +81,7 @@ jobs:
       - name: Brakeman
         uses: devmasx/brakeman-linter-action@v1.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN_2 }}
           REPORT_PATH: tmp/brakeman.json
 
       - name: Lint Ruby files
