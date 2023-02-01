@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Ejemplo de Integración Continua (CI) en una aplicación Ruby on Rails 
 
-Things you may want to cover:
+[Link Slides]("https://docs.google.com/presentation/d/1H5lFzG0I44-XJ40ZL97PM3a7wB2_VIeeDqTBtWgE7iQ/edit?usp=sharing"]
+https://docs.google.com/presentation/d/1H5lFzG0I44-XJ40ZL97PM3a7wB2_VIeeDqTBtWgE7iQ/edit?usp=sharing)
 
-* Ruby version
+# Basic configuration
+- Ruby 3.1.0
+- Ruby on Rails 7.0.4
+- Postgres database
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
