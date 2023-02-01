@@ -70,6 +70,8 @@ jobs:
           bundle exec rails db:prepare
 
       - name: Run Tests
+        env:
+          DATABASE_URL: postgres://postgres:secret_password@localhost:5432/test
         run: |
           bundle exec rails test
 
